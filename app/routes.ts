@@ -1,3 +1,3 @@
-import {type RouteConfig, route} from "@react-router/dev/routes";
+import { type RouteConfig, route, index } from "@react-router/dev/routes";
 
-export default [route("/", "routes/CountriesPage.tsx")] satisfies RouteConfig;
+export default [index("routes/CountriesPage.tsx"), route("countries/:alpha3Code", "routes/countries/CountryPage.tsx")] satisfies RouteConfig;
