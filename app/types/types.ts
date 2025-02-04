@@ -25,25 +25,8 @@ export type Country = Partial<{
     name: string;
     symbol: string;
   }[];
-  languages?: {
-    iso639_1: string;
-    iso639_2: string;
-    name: string;
-    nativeName: string;
-  }[];
-  translations: {
-    br: string;
-    pt: string;
-    nl: string;
-    hr: string;
-    fa: string;
-    de: string;
-    es: string;
-    fr: string;
-    ja: string;
-    it: string;
-    hu: string;
-  };
+  languages: ({ iso639_1: string; iso639_2: string; name: string; nativeName: string } | { iso639_2: string; name: string; nativeName?: string; iso639_1?: undefined })[];
+  translations: { [key: string]: string | undefined };
   flag: string;
   regionalBlocs: {
     acronym: string;

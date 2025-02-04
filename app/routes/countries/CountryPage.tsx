@@ -1,15 +1,13 @@
 import type { Route } from "../countries/+types/CountryPage";
 import countryData from "~/data/countries.json";
 import type { Country } from "~/types/types";
-import { useLoaderData } from "react-router";
 
 export async function loader({ params }: Route.LoaderArgs) {
   return countryData.find((country) => country.alpha3Code === params.alpha3Code);
 }
 
 export default function CountryPage({ loaderData }: Route.ComponentProps) {
-  const country: Country = useLoaderData();
-
+  const country: Country | undefined = loaderData;
   const propertiesPart1 = country
     ? [
         { label: "Native Name", value: country.nativeName },
