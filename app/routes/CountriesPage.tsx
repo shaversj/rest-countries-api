@@ -7,15 +7,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function CountriesPage() {
   return (
-    <main className={"w-[1440px] bg-[#fafafa] antialiased"}>
-      <header className={"shadow-header border-header-custom flex h-[80px] items-center bg-white px-[80px]"}>
-        <h1 className={"text-header-lg"}>Where in the world?</h1>
-        <div className={"ml-auto flex gap-x-2"}>
-          <img src={"/moon.svg"} alt={"Dark Mode"} />
-          <h2 className={"text-header-sm"}>Dark Mode</h2>
-        </div>
-      </header>
-
+    <div>
       <section className={"mx-[80px] flex py-[48px]"}>
         <div className={"shadow-search flex w-[480px] gap-x-6 rounded-[5px] py-6 pl-8"}>
           <img src={"/icon-glass.svg"} alt={"Search"} />
@@ -36,6 +28,6 @@ export default function CountriesPage() {
           <CountryCard country={country} key={country.alpha3Code} />
         ))}
       </div>
-    </main>
+    </div>
   );
 }

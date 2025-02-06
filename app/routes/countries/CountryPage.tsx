@@ -31,10 +31,10 @@ export default function CountryPage({ loaderData }: Route.ComponentProps) {
       {country && (
         <>
           <div>
-            <div className={"flex items-center"}>
+            <button className={"flex items-center gap-x-[10px] py-[80px]"}>
               <img src={"/arrow-left.svg"} alt={"Back"} />
               <span>Back</span>
-            </div>
+            </button>
             <div className={"flex items-center gap-x-[120px]"}>
               <img src={country.flags?.png || country.flags?.svg} alt={country.name} className={"h-[401px] w-[560px]"} />
               <div>
