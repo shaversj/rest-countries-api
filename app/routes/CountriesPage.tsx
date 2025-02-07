@@ -29,9 +29,9 @@ export default function CountriesPage({ loaderData }: Route.ComponentProps) {
   const regions = Array.from(new Set(countryData.map((country) => country.region))).sort();
   return (
     <div>
-      <section className={"mx-[80px] flex py-[48px]"}>
-        <div className={"shadow-search flex w-[480px] gap-x-6 rounded-[5px] py-6 pl-8"}>
-          <img src={"/icon-glass.svg"} alt={"Search"} />
+      <section className={"mx-4 flex flex-col items-center py-6 lg:mx-[80px] lg:flex-row lg:py-[48px]"}>
+        <div className={"shadow-search flex items-center gap-x-6 rounded-[5px] bg-white py-[14px] pl-8 lg:w-[480px] lg:py-[18px]"}>
+          <img className={"size-[16px] lg:size-[18px]"} src={"/icon-glass.svg"} alt={"Search"} />
           <Form onChange={(event) => submit(event.currentTarget)}>
             <input
               aria-label={"Search countries"}
@@ -44,7 +44,7 @@ export default function CountriesPage({ loaderData }: Route.ComponentProps) {
             />
           </Form>
         </div>
-        <form className={"ml-auto flex items-center"} onChange={(event) => submit(event.currentTarget)}>
+        <form className={"flex items-center pt-[40px] lg:ml-auto lg:pt-0"} onChange={(event) => submit(event.currentTarget)}>
           <select className={"text-search text-very-dark-blue-text appearance-none py-[18px]"} defaultValue={region || ""} id="region" name="region">
             <option className={"text-very-dark-blue-text"}>Filter by Region</option>
             {regions.map((regionName) => (
@@ -55,7 +55,7 @@ export default function CountriesPage({ loaderData }: Route.ComponentProps) {
         </form>
       </section>
 
-      <section className={"grid grid-cols-4 gap-x-[75px] gap-y-[75px] px-[80px]"}>
+      <section className={"grid justify-center gap-y-[40px] md:grid-cols-3 lg:grid-cols-4 lg:gap-x-[75px] lg:gap-y-[75px] lg:px-[80px]"}>
         {countries.map((country) => (
           <Link to={`/countries/${country.alpha3Code}`} key={country.alpha3Code}>
             <CountryCard country={country} />
