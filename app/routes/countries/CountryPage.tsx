@@ -1,6 +1,7 @@
 import type { Route } from "../countries/+types/CountryPage";
 import countryData from "~/data/countries.json";
 import type { Country } from "~/types/types";
+import { Link } from "react-router";
 
 export async function loader({ params }: Route.LoaderArgs) {
   return countryData.find((country) => country.alpha3Code === params.alpha3Code);
@@ -26,17 +27,21 @@ export default function CountryPage({ loaderData }: Route.ComponentProps) {
       ]
     : [];
 
+  function getCountryByName(name: string) {
+    return countryData.find((country) => country.name === name);
+  }
+
   return (
     <div className={"px-[80px]"}>
       {country && (
         <>
           <div>
-            <button className={"flex items-center gap-x-[10px] py-[80px]"}>
+            <Link to={"/"} className={"flex items-center gap-x-[10px] py-[80px]"}>
               <img src={"/arrow-left.svg"} alt={"Back"} />
               <span>Back</span>
-            </button>
+            </Link>
             <div className={"flex items-center gap-x-[120px]"}>
-              <img src={country.flags?.png || country.flags?.svg} alt={country.name} className={"h-[401px] w-[560px]"} />
+              <img src={country.flags?.svg} alt={country.name} className={"h-[401px] w-[560px]"} />
               <div>
                 <h1 className={"text-very-dark-blue-text text-[32px] font-extrabold"}>{country.name}</h1>
                 <div className={"flex"}>
@@ -58,12 +63,14 @@ export default function CountryPage({ loaderData }: Route.ComponentProps) {
                   </div>
                 </div>
                 <div className={"pt-[68px]"}>
-                  <p className={"flex items-center gap-x-[15px]"}>
+                  <p className={"flex flex-wrap items-center gap-x-[15px] gap-y-5"}>
                     <h2 className={"text-very-dark-blue-text leading-[24px] font-semibold"}>Border Countries: </h2>
                     {country.borders?.map((border) => (
-                      <div className={"shadow-border-countries grid h-[28px] w-[96px] place-items-center gap-x-[10px] rounded-[2px]"}>
-                        <span className={"text-very-dark-blue-text text-[14px] font-light"}>{border}</span>
-                      </div>
+                      <Link to={`/countries/${border}`} key={border}>
+                        <div className={"shadow-border-countries grid h-[28px] w-[96px] place-items-center gap-x-[10px] rounded-[2px]"}>
+                          <span className={"text-very-dark-blue-text text-[14px] font-light"}>{border}</span>
+                        </div>
+                      </Link>
                     ))}
                   </p>
                 </div>
