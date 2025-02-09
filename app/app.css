@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -15,24 +17,26 @@
 .border-header-custom {
   border: 1.25px solid #ffffff;
 }
+
+
 .text-header {
-    @apply text-[14px] leading-[20px] lg:text-[24px] lg:leading-[33px] font-extrabold text-very-dark-blue-text;
+    @apply text-[14px] leading-[20px] dark:text-white lg:text-[24px] lg:leading-[33px] font-extrabold text-very-dark-blue-text;
 }
 
 .text-header-sm {
-    @apply text-[12px] lg:text-[16px] lg:leading-[22px] font-semibold text-very-dark-blue-text;
+    @apply text-[12px] lg:text-[16px] dark:text-white lg:leading-[22px] font-semibold text-very-dark-blue-text;
 }
 
 .text-title-lg {
-  @apply text-[18px] leading-[26px] font-extrabold text-very-dark-blue-text;
+  @apply text-[18px] leading-[26px] font-extrabold text-very-dark-blue-text dark:text-white;
 }
 
 .text-label-lg {
-  @apply text-[14px] leading-[16px] font-semibold text-very-dark-blue-text;
+  @apply text-[14px] leading-[16px] font-semibold text-very-dark-blue-text dark:text-white;
 }
 
 .text-body-lg {
-  @apply text-[14px] leading-[16px] font-light text-very-dark-blue-text;
+  @apply text-[14px] leading-[16px] font-light text-very-dark-blue-text dark:text-white;
 }
 
 .text-search {
@@ -47,6 +51,10 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0562443)
 }
 
+.shadow-header-dark {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0562443)
+}
+
 .shadow-search {
   box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.0532439);
 }
@@ -55,11 +63,3 @@
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.104931)
 }
 
-html,
-body {
-  /*@apply bg-white dark:bg-gray-950;*/
-
-  /*@media (prefers-color-scheme: dark) {*/
-  /*  color-scheme: dark;*/
-  /*}*/
-}

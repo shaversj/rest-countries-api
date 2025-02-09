@@ -3,6 +3,7 @@ import countryData from "~/data/countries.json";
 import CountryCard from "~/components/CountryCard";
 import { Form, Link, useSubmit } from "react-router";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import GlassIcon from "~/components/GlassIcon";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Counties" }];
@@ -31,8 +32,12 @@ export default function CountriesPage({ loaderData }: Route.ComponentProps) {
   return (
     <div>
       <section className={"mx-4 flex flex-col py-6 lg:mx-[80px] lg:flex-row lg:items-center lg:py-[48px]"}>
-        <div className={"shadow-search flex items-center gap-x-6 rounded-[5px] bg-white py-[14px] pl-8 lg:w-[480px] lg:py-[18px]"}>
-          <img className={"size-[16px] lg:size-[18px]"} src={"/icon-glass.svg"} alt={"Search"} />
+        <div
+          className={
+            "shadow-search dark:bg-dark-blue-elements flex items-center gap-x-6 rounded-[5px] bg-white py-[14px] pl-8 lg:w-[480px] lg:py-[18px]"
+          }
+        >
+          <GlassIcon containerClassName={"size-[16px] lg:size-[20px]"} iconClassName={"fill-[#848484] dark:fill-white"} />
           <Form onChange={(event) => submit(event.currentTarget)}>
             <input
               aria-label={"Search countries"}
@@ -40,7 +45,7 @@ export default function CountriesPage({ loaderData }: Route.ComponentProps) {
               id="q"
               name="q"
               type="search"
-              className={"outline-none"}
+              className={"text-very-dark-blue-text outline-none dark:text-white dark:placeholder:text-white"}
               placeholder="Search for a country..."
             />
           </Form>
@@ -48,7 +53,7 @@ export default function CountriesPage({ loaderData }: Route.ComponentProps) {
         <Menu>
           <MenuButton
             className={
-              "mt-[40px] flex h-[56px] w-[200px] items-center gap-x-[47px] rounded-[5px] bg-white pl-6 text-[14px] leading-[20px] font-light text-[#111517] lg:mt-0 lg:ml-auto"
+              "dark:bg-dark-blue-elements mt-[40px] flex h-[56px] w-[200px] items-center gap-x-[47px] rounded-[5px] bg-white pl-6 text-[14px] leading-[20px] font-light text-[#111517] lg:mt-0 lg:ml-auto dark:text-white"
             }
           >
             Filter by Region
@@ -58,14 +63,14 @@ export default function CountriesPage({ loaderData }: Route.ComponentProps) {
           <MenuItems
             transition
             anchor="bottom end"
-            className="mt-2 w-[200px] origin-top-right rounded-[5px] border border-white/5 bg-white p-1 transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+            className="dark:bg-dark-blue-elements mt-2 w-[200px] origin-top-right rounded-[5px] border border-white/5 bg-white p-1 transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
           >
             {regions.map((regionName) => (
               <MenuItem key={regionName}>
                 <button
                   onClick={() => submit({ region: regionName })}
                   className={
-                    "flex w-full appearance-none py-[8px] pl-6 text-[14px] leading-[20px] font-light text-[#111517] data-[focus]:bg-gray-200"
+                    "dark:data-[focus]:bg-white-200 flex w-full appearance-none py-[8px] pl-6 text-[14px] leading-[20px] font-light text-[#111517] data-[focus]:bg-gray-500 dark:text-white"
                   }
                   id="region"
                   name="region"
