@@ -45,15 +45,6 @@ export default function CountriesPage({ loaderData }: Route.ComponentProps) {
             />
           </Form>
         </div>
-        {/*<form className={"flex items-center pt-[40px] lg:ml-auto lg:pt-0"} onChange={(event) => submit(event.currentTarget)}>*/}
-        {/*  <select className={"text-search text-very-dark-blue-text appearance-none py-[18px]"} defaultValue={region || ""} id="region" name="region">*/}
-        {/*    <option className={"text-very-dark-blue-text"}>Filter by Region</option>*/}
-        {/*    {regions.map((regionName) => (*/}
-        {/*      <option key={regionName}>{regionName}</option>*/}
-        {/*    ))}*/}
-        {/*  </select>*/}
-        {/*  <img src={"/arrow-down.svg"} className={"size-[12px]"} alt={"Arrow Down"} />*/}
-        {/*</form>*/}=
         <Menu>
           <MenuButton
             className={
@@ -72,13 +63,13 @@ export default function CountriesPage({ loaderData }: Route.ComponentProps) {
             {regions.map((regionName) => (
               <MenuItem key={regionName}>
                 <button
-                  onClick={(event) => submit(event.currentTarget)}
+                  onClick={() => submit({ region: regionName })}
                   className={
                     "flex w-full appearance-none py-[8px] pl-6 text-[14px] leading-[20px] font-light text-[#111517] data-[focus]:bg-gray-200"
                   }
                   id="region"
                   name="region"
-                  value={regionName}
+                  type={"submit"}
                 >
                   {regionName}
                 </button>
