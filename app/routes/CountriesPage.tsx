@@ -2,6 +2,7 @@ import type { Route } from "./+types/CountriesPage";
 import countryData from "~/data/countries.json";
 import CountryCard from "~/components/CountryCard";
 import { Form, Link, useSubmit } from "react-router";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Counties" }];
@@ -44,15 +45,47 @@ export default function CountriesPage({ loaderData }: Route.ComponentProps) {
             />
           </Form>
         </div>
-        <form className={"flex items-center pt-[40px] lg:ml-auto lg:pt-0"} onChange={(event) => submit(event.currentTarget)}>
-          <select className={"text-search text-very-dark-blue-text appearance-none py-[18px]"} defaultValue={region || ""} id="region" name="region">
-            <option className={"text-very-dark-blue-text"}>Filter by Region</option>
+        {/*<form className={"flex items-center pt-[40px] lg:ml-auto lg:pt-0"} onChange={(event) => submit(event.currentTarget)}>*/}
+        {/*  <select className={"text-search text-very-dark-blue-text appearance-none py-[18px]"} defaultValue={region || ""} id="region" name="region">*/}
+        {/*    <option className={"text-very-dark-blue-text"}>Filter by Region</option>*/}
+        {/*    {regions.map((regionName) => (*/}
+        {/*      <option key={regionName}>{regionName}</option>*/}
+        {/*    ))}*/}
+        {/*  </select>*/}
+        {/*  <img src={"/arrow-down.svg"} className={"size-[12px]"} alt={"Arrow Down"} />*/}
+        {/*</form>*/}=
+        <Menu>
+          <MenuButton
+            className={
+              "ml-auto flex h-[56px] w-[200px] items-center gap-x-[47px] rounded-[5px] bg-white pl-6 text-[14px] leading-[20px] font-light text-[#111517]"
+            }
+          >
+            Filter by Region
+            <img src={"/arrow-down.svg"} className={"size-[12px]"} alt={"Arrow Down"} />
+          </MenuButton>
+
+          <MenuItems
+            transition
+            anchor="bottom end"
+            className="mt-2 w-[200px] origin-top-right rounded-[5px] border border-white/5 bg-white p-1 transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+          >
             {regions.map((regionName) => (
-              <option key={regionName}>{regionName}</option>
+              <MenuItem key={regionName}>
+                <button
+                  onClick={(event) => submit(event.currentTarget)}
+                  className={
+                    "flex w-full appearance-none py-[8px] pl-6 text-[14px] leading-[20px] font-light text-[#111517] data-[focus]:bg-gray-200"
+                  }
+                  id="region"
+                  name="region"
+                  value={regionName}
+                >
+                  {regionName}
+                </button>
+              </MenuItem>
             ))}
-          </select>
-          <img src={"/arrow-down.svg"} className={"size-[12px]"} alt={"Arrow Down"} />
-        </form>
+          </MenuItems>
+        </Menu>
       </section>
 
       <section className={"grid justify-center gap-y-[40px] md:grid-cols-3 lg:grid-cols-4 lg:gap-x-[75px] lg:gap-y-[75px] lg:px-[80px]"}>
