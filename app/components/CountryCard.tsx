@@ -6,8 +6,8 @@ type CountryCardProps = {
 
 export default function CountryCard({ country }: CountryCardProps) {
   return (
-    <div className={"shadow-custom dark:bg-dark-blue-elements h-[336px] w-[264px] rounded-lg bg-white"}>
-      <img src={country.flags?.png} alt={country.name} className={"h-[160px] w-[264px] rounded-t-lg"} />
+    <div className={"shadow-custom dark:bg-dark-blue-elements h-84 w-66 rounded-lg bg-white"}>
+      <img src={country.flags?.png} alt={country.name} className={"h-40 w-66 rounded-t-lg"} />
       <div className={"pt-6 pl-6"}>
         <h2 className={"text-title-lg"}>{country.name}</h2>
 
