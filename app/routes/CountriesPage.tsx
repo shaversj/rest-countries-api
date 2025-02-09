@@ -30,7 +30,7 @@ export default function CountriesPage({ loaderData }: Route.ComponentProps) {
   const regions = Array.from(new Set(countryData.map((country) => country.region))).sort();
   return (
     <div>
-      <section className={"mx-4 flex flex-col items-center py-6 lg:mx-[80px] lg:flex-row lg:py-[48px]"}>
+      <section className={"mx-4 flex flex-col py-6 lg:mx-[80px] lg:flex-row lg:items-center lg:py-[48px]"}>
         <div className={"shadow-search flex items-center gap-x-6 rounded-[5px] bg-white py-[14px] pl-8 lg:w-[480px] lg:py-[18px]"}>
           <img className={"size-[16px] lg:size-[18px]"} src={"/icon-glass.svg"} alt={"Search"} />
           <Form onChange={(event) => submit(event.currentTarget)}>
@@ -48,7 +48,7 @@ export default function CountriesPage({ loaderData }: Route.ComponentProps) {
         <Menu>
           <MenuButton
             className={
-              "ml-auto flex h-[56px] w-[200px] items-center gap-x-[47px] rounded-[5px] bg-white pl-6 text-[14px] leading-[20px] font-light text-[#111517]"
+              "mt-[40px] flex h-[56px] w-[200px] items-center gap-x-[47px] rounded-[5px] bg-white pl-6 text-[14px] leading-[20px] font-light text-[#111517] lg:mt-0 lg:ml-auto"
             }
           >
             Filter by Region
